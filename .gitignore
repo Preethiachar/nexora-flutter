@@ -1,0 +1,27 @@
+# Node
+node_modules/
+.env
+*.log
+npm-debug.log*
+
+# Uploaded runtime files
+server/uploads/documents/*
+server/uploads/images/*
+server/uploads/resumes/*
+!server/uploads/documents/.gitkeep
+!server/uploads/images/.gitkeep
+
+# Frontend build
+client/dist/
+
+# Flutter dev artifacts (keep server/public/flutter for fast Render deployment)
+flutter_app/.dart_tool/
+flutter_app/build/
+flutter_app/.flutter-plugins
+flutter_app/.flutter-plugins-dependencies
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+*.iml
