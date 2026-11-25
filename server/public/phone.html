@@ -142,7 +142,7 @@
 
   <script>
     const isLocalDev = window.location.hostname === 'localhost' && window.location.port === '5000';
-    const flutterUrl = isLocalDev ? 'http://localhost:8080' : window.location.origin;
+    const flutterUrl = `${window.location.origin}/jobs`;
     document.getElementById('flutterFrame').src = flutterUrl;
     document.getElementById('fullFlutterLink').href = flutterUrl;
     if (!isLocalDev) {

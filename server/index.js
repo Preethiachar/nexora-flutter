@@ -55,8 +55,8 @@ app.use(express.urlencoded({ extended: true }));
 // Serve uploaded documents, images, and resumes statically
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Live Flutter Phone Frame page
-app.get('/phone', (req, res) => {
+// Live Flutter Phone Frame page (default at / and /phone)
+app.get(['/', '/phone'], (req, res) => {
   res.sendFile(path.join(__dirname, 'public/phone.html'));
 });
 
@@ -74,10 +74,10 @@ app.get('/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString(), platform: 'Nexora v1.1' });
 });
 
-// Serve built Flutter Web app at root (for Render / production single-URL deployment)
+// Serve built Flutter Web app routes (/jobs, /login, /ideas, /groups, /ats, /profile)
 const flutterWebDir = path.join(__dirname, 'public/flutter');
 if (fs.existsSync(flutterWebDir)) {
-  app.use(express.static(flutterWebDir));
+  app.use(express.static(flutterWebDir, { index: false }));
   app.get('*', (req, res, next) => {
     if (req.path.startsWith('/api') || req.path.startsWith('/uploads') || req.path.startsWith('/socket.io')) {
       return next();
